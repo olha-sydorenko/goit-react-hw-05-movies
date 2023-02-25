@@ -4,7 +4,7 @@ import { Movies } from '../pages/Movies';
 import { MovieDetails } from './MovieDetails/MovieDetails';
 import { Cast } from './Cast/Cast';
 import { Reviews } from './Reviews/Reviews';
-import { Error } from '../pages/Error';
+
 import { Layout } from './Layout/Layout';
 
 export const App = () => {
@@ -19,7 +19,7 @@ export const App = () => {
             <Route path="reviews" element={<Reviews />} />
           </Route>
         </Route>
-        <Route path="*" element={<Error />} />
+        <Route path="*" element={<Home />} />
       </Routes>
     </>
   );
