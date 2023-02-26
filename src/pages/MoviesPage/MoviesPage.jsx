@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 
-import { useSearchParams } from 'react-router-dom';
 import { getMovieByQuery } from 'services/getMovieByQuery';
 import { MoviesList } from '../../components/MoviesList/MoviesList';
 import { SearchField } from '../../components/SearchField/SearchField';
