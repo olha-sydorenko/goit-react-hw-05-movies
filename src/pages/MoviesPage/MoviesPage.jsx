@@ -6,9 +6,8 @@ import { SearchField } from '../../components/SearchField/SearchField';
 
 export const Movies = () => {
   const [movies, setMovies] = useState([]);
-  // const [searchParams, setSearchParams] = useSearchParams('');
+
   const [query, setQuery] = useState('');
-  // const query = searchParams.get('query');
 
   const handleSubmit = query => {
     setQuery(query);
