@@ -1,15 +1,9 @@
 import { useState, useEffect } from 'react';
-import {
-  NavLink,
-  Link,
-  Outlet,
-  useParams,
-  useLocation,
-} from 'react-router-dom';
+import { Link, Outlet, useParams, useLocation } from 'react-router-dom';
 import { getMovieDetails } from '../../services/getMovieDetails';
 import { MovieCard } from '../../components/MovieCard/MovieCard';
 
-import { StyledLinks } from './MovieDetails.styled';
+import { StyledNavLink } from './MovieDetails.styled';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -33,15 +27,14 @@ const MovieDetails = () => {
       <Link to={location.state?.from ?? '/'}>Go back</Link>
       {movie && <MovieCard movie={movie} />}
       <h2>Additional information</h2>
-      <StyledLinks>
-        <NavLink state={location.state} to="cast">
-          Cast
-        </NavLink>
-        <NavLink state={location.state} to="reviews">
-          Reviews
-        </NavLink>
-        <Outlet />
-      </StyledLinks>
+
+      <StyledNavLink state={location.state} to="cast">
+        Cast
+      </StyledNavLink>
+      <StyledNavLink state={location.state} to="reviews">
+        Reviews
+      </StyledNavLink>
+      <Outlet />
     </>
   );
 };

@@ -11,7 +11,7 @@ export const MovieCard = ({ movie }) => {
       {<img src={`${IMG_URL}${poster_path}`} alt={title} width="400" />}
       <div>
         <h1>{title}</h1>
-        <p>User score: {userScore}</p>
+        <p>User score: {userScore}%</p>
         <h2>Overview</h2>
         <p>{overview}</p>
         <h3>Genres</h3>

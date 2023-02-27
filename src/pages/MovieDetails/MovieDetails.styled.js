@@ -1,6 +1,13 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
-export const StyledLinks = styled.div`
-  display: flex;
-  gap: 15px;
+export const StyledNavLink = styled(NavLink)`
+  display: inline-block;
+  text-decoration: none;
+  padding: 15px;
+  transition: all 0.3s;
+  color: black;
+  &.active {
+    color: blue;
+  }
 `;
