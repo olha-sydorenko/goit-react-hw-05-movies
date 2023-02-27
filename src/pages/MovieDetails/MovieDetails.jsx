@@ -1,37 +1,49 @@
 import { useState, useEffect } from 'react';
-import { NavLink, Outlet, useParams } from 'react-router-dom';
+import {
+  NavLink,
+  Link,
+  Outlet,
+  useParams,
+  useLocation,
+} from 'react-router-dom';
 import { getMovieDetails } from '../../services/getMovieDetails';
-// import { GoBack } from '../GoBack/GoBack';
-
 import { MovieCard } from '../../components/MovieCard/MovieCard';
 
-export const MovieDetails = () => {
+import { StyledLinks } from './MovieDetails.styled';
+
+const MovieDetails = () => {
   const { movieId } = useParams();
-  const [movie, setMovie] = useState({});
+  const [movie, setMovie] = useState(null);
+  const location = useLocation();
 
   useEffect(() => {
-    if (!movie) return;
     const showMovieDetails = async () => {
       try {
         const data = await getMovieDetails(movieId);
         setMovie(data);
-        // console.log(data);
       } catch (error) {
         console.log(error.message);
       }
     };
     showMovieDetails(movieId);
   }, [movieId]);
-  // console.log('movie: ', movie);
-  // console.log(movie.title);
+
   return (
     <>
+      <Link to={location.state?.from ?? '/'}>Go back</Link>
       {movie && <MovieCard movie={movie} />}
-      <div>
-        <NavLink to="cast">Cast</NavLink>
-        <NavLink to="reviews">Reviews</NavLink>
+      <h2>Additional information</h2>
+      <StyledLinks>
+        <NavLink state={location.state} to="cast">
+          Cast
+        </NavLink>
+        <NavLink state={location.state} to="reviews">
+          Reviews
+        </NavLink>
         <Outlet />
-      </div>
+      </StyledLinks>
     </>
   );
 };
+
+export default MovieDetails;

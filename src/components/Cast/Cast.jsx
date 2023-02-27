@@ -8,13 +8,10 @@ export const Cast = () => {
   const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
   useEffect(() => {
-    // if (!cast) return;
     const showMovieCast = async () => {
       try {
         const data = await getMovieCast(movieId);
         setCast(data.cast);
-        console.log(data);
-        console.log(data.cast);
       } catch (error) {
         console.log(error.message);
       }
@@ -26,7 +23,7 @@ export const Cast = () => {
     <ul>
       {cast.map(({ name, character, profile_path }) => (
         <li key={name}>
-          <img src={`${IMG_URL}${profile_path}`} alt={name} />
+          <img src={`${IMG_URL}${profile_path}`} alt={name} width="200" />
           <p>{name}</p>
           <p>Character: {character}</p>
         </li>

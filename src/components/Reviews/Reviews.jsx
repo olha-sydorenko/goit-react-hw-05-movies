@@ -11,8 +11,6 @@ export const Reviews = () => {
       try {
         const data = await getMovieReviews(movieId);
         setReviews(data.results);
-        console.log(data);
-        console.log(data.results);
       } catch (error) {
         console.log(error.message);
       }

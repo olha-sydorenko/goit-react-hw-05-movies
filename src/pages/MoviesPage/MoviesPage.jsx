@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
-
 import { getMovieByQuery } from 'services/getMovieByQuery';
 import { MoviesList } from '../../components/MoviesList/MoviesList';
 import { SearchField } from '../../components/SearchField/SearchField';
 
-export const Movies = () => {
+const Movies = () => {
   const [movies, setMovies] = useState([]);
 
   const [query, setQuery] = useState('');
@@ -12,12 +11,9 @@ export const Movies = () => {
   const handleSubmit = query => {
     setQuery(query);
     setMovies([]);
-    console.log(query);
-    console.log(setQuery(query));
   };
 
   useEffect(() => {
-    if (!movies) return;
     const fetchMovies = async () => {
       try {
         const data = await getMovieByQuery(query);
@@ -37,3 +33,5 @@ export const Movies = () => {
     </>
   );
 };
+
+export default Movies;
