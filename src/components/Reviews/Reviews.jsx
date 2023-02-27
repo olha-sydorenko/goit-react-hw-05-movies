@@ -20,12 +20,24 @@ export const Reviews = () => {
 
   return (
     <ul>
-      {reviews.map(({ id, content, author }) => (
+      {!reviews.length ? (
+        <p>We don't have any reviews for this movie</p>
+      ) : (
+        <ul>
+          {reviews.map(({ id, content, author }) => (
+            <li key={id}>
+              <p>AUTHOR: {author}</p>
+              <p>{content}</p>
+            </li>
+          ))}
+        </ul>
+      )}
+      {/* {reviews.map(({ id, content, author }) => (
         <li key={id}>
           <p>AUTHOR: {author}</p>
           <p>{content}</p>
         </li>
-      ))}
+      ))} */}
     </ul>
   );
 };

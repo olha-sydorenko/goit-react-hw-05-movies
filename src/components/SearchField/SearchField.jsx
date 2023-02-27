@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { ImSearch } from 'react-icons/im';
+import {
+  ButtonLabel,
+  FormInput,
+  SearchButton,
+  SearchForm,
+} from './SearchField.styled';
 
 export const SearchField = props => {
   const [query, setQuery] = useState('');
@@ -17,21 +23,22 @@ export const SearchField = props => {
 
   return (
     <>
-      <form onSubmit={handleFormSubmit}>
-        <button type="submit">
-          <label>
-            <ImSearch size="14px" />
-          </label>
-        </button>
+      <SearchForm onSubmit={handleFormSubmit}>
+        <SearchButton type="submit">
+          <ButtonLabel>
+            <ImSearch size="18px" />
+          </ButtonLabel>
+        </SearchButton>
 
-        <input
+        <FormInput
           type="text"
+          autocomplete="off"
           autoFocus
           placeholder="Search movies"
           value={query}
           onChange={handleInputChange}
         />
-      </form>
+      </SearchForm>
     </>
   );
 };
